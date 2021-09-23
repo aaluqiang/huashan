@@ -2,6 +2,7 @@
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class test {
@@ -24,5 +25,8 @@ String dzsj="20201001102241";
 //            e.printStackTrace();
 //        }
         System.out.println(str);
+
+        String TimeNow = new SimpleDateFormat("yyyyMMdd").format(Calendar.getInstance().getTime());
+        System.out.println(TimeNow);
     }
 }

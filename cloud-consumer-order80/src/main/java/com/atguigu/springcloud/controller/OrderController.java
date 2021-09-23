@@ -36,10 +36,10 @@ public static final String PAYMENT_URL = "http://CLOUD-PAYMENT-SERVICE";
         return restTemplate.postForObject(PAYMENT_URL+"/payment/create",payment,CommonResult.class);  //写操作
     }
 
-    @GetMapping("/consumer/payment/get/{id}")
-    public CommonResult<Payment> getPayment(@PathVariable("id") Long id){
-        return restTemplate.getForObject(PAYMENT_URL+"/payment/get/"+id, CommonResult.class);
-    }
+//    @GetMapping("/consumer/payment/get/{id}")
+//    public CommonResult<Payment> getPayment(@PathVariable("id") Long id){
+//        return restTemplate.getForObject(PAYMENT_URL+"/payment/get/"+id, CommonResult.class);
+//    }
 
 
     @GetMapping("/consumer/payment/getforEntity/{id}")
@@ -63,5 +63,11 @@ public static final String PAYMENT_URL = "http://CLOUD-PAYMENT-SERVICE";
         URI uri = serviceInstance.getUri();
         return restTemplate.getForObject(uri+"/payment/lb",String.class);
     }
-
+    // ====================> zipkin+sleuth
+    @GetMapping("/consumer/payment/zipkin")
+    public String paymentZipkin()
+    {
+        String result = restTemplate.getForObject(PAYMENT_URL+"/payment/zipkin/", String.class);
+        return result;
+    }
 }
